@@ -16,6 +16,20 @@ Check amazonmusic.sql for the code
 
 The script will execute Alexa Remote Control and write all the received data to $TMPFILE. $TMPFILE contains alot of data, I just search for the current state, artist, title, album, albumimageURL. This data will be written to $WEBFILE and to your database, $WEBFILE is used to display your music on a website. 
 
+Edit the following variables inside the script
+
+```
+LOGIN="local" => MySQL login profile (see below if you need to add one)
+DB=amazonmusic => your database if you wish to rename 
+TMPFILE=/tmp/audio.txt => path of the tempfile
+WEBFILE=/var/www/mysite/audio.php => path of the webfile which should be inside your webfolder 
+WEBFILE2=/var/www/mysite/audio2.php => path to a second webfile which is used to compare both webfiles
+```
+
+If you dont have a MySQL login profile (used for passwordless login), you can add one with the following command (DO NOT USE ROOT AS USER!)
+
+```mysql_config_editor set --login-path=<YOURPROFILENAME> --host=<YOURHOSTIP> --user=<YOURUSERNAME> --password```
+
 Make sure the script is executeable
 
 ```chmod +x copyTracksinSQL.sh```
